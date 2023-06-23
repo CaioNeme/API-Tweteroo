@@ -18,11 +18,20 @@ app.post("/sign-up", (req, res) => {
 
 app.post("/tweets", (req, res) => {
   const { username, tweet } = req.body;
+  if (img === undefined) {
+    res.status(401).send("UNAUTHORIZED");
+    return;
+  }
   tweets.push({ username, avatar: img, tweet });
-  res.send(tweets);
+  res.status(201).send("OK");
 });
 
 app.get("/tweets", (req, res) => {
+  if (tweets.length > 10) {
+    for (let i = tweets.length; i > 10; i--) {
+      tweets.splice(0, 1);
+    }
+  }
   res.send(tweets);
 });
 

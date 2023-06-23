@@ -3,7 +3,7 @@ import cors from "cors";
 import { tweets } from "./tweets.js";
 import { users } from "./users.js";
 
-const PORT = 4000;
+const PORT = 5000;
 let img;
 const app = express();
 app.use(express.json());
